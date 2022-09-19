@@ -1,6 +1,6 @@
-import imgOne from '../../../../public/img/img-one.jpg'
-import imgTwo from '../../../../public/img/img-two.jpg'
-import imgThree from '../../../../public/img/img-three.jpg'
+import imgOne from '../../../public/img/img-one.jpg'
+import imgTwo from '../../../public/img/img-two.jpg'
+import imgThree from '../../../public/img/img-three.jpg'
 
 const Information = () => {
   return (
