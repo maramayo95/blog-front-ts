@@ -1,6 +1,7 @@
-import { useEffect, useRef, useCallback } from "react"
+import { useState, useCallback } from "react"
 import "quill/dist/quill.snow.css"
 import Quill from "quill"
+import {Quill as QuillTypes} from 'quill'
 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -18,17 +19,19 @@ const TOOLBAR_OPTIONS = [
 
 
 const TextEditor = () => {
+  const [quill, setQuill] = useState<any>({})
+  console.log(quill.getContents())
   const wrapperRef = useCallback( (wrapper: HTMLDivElement ) => {
    if (wrapper == null) return
     wrapper.innerHTML = ""
     const editor = document.createElement('div')
      wrapper.append(editor)
 
-    new Quill(editor , {
+    const q = new Quill(editor , {
       theme : "snow",
       modules: { toolbar: TOOLBAR_OPTIONS },
     })
-
+    setQuill(q)
   }, [])
   
  

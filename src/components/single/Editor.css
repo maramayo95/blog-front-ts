@@ -1,0 +1,10 @@
+.postContent{
+    color: white; 
+
+}
+.postContent ul {
+    padding-left: 1rem;
+}
+.postContent li {
+    list-style: circle;
+}
