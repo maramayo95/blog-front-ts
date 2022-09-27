@@ -1,4 +1,4 @@
-import React from 'react'
+import {Link} from 'react-router-dom'
 
 const NavBar = () => {
   return (
@@ -13,7 +13,7 @@ const NavBar = () => {
         <ul className="items-stretch hidden space-x-3 md:flex">
            
             <li className="flex">
-                <a rel="noopener noreferrer" href="#" className="flex items-center px-4 border-2 border-transparent rounded-lg bg-violet-400 text-white">Create + </a>
+                <Link rel="noopener noreferrer" to="/create/article" className="flex items-center px-4 border-2 border-transparent rounded-lg bg-violet-400 text-white">Create + </Link>
             </li>
             <li className="flex">
                 <a rel="noopener noreferrer" href="#" className="flex items-center px-4  border-2 border-solid rounded-lg text-white">Log out</a>

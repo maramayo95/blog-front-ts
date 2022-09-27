@@ -1,13 +1,15 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import Footer from '../../single/Footer'
 import NavBar from '../../single/NavBar'
-import Post from '../../single/Post'
+import PostContainer from './PostContainer';
 
 const Dashboard = () => {
+ 
+
   return (
     <>
       <NavBar/>
-      <Post/>
+      <PostContainer/>
       <Footer/>
     </>
   )

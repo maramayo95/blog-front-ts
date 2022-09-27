@@ -1,3 +1,9 @@
+.text-editor {
+    min-height: 50vh;
+    background-color: #fafafa;
+ 
+}
+
 .postContent{
     color: white; 
 
