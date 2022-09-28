@@ -1,15 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import Post from '../../single/Post'
 
+interface PostProps {
+author: string, 
+body: string,
+comments: []
+date: Date, 
+title:string, 
+__v: Number,
+_id: string
+}
+
+
+
 const PostContainer = () => {
-	const [data, setData] = useState([])
+	const [data, setData] = useState<PostProps[]>([])
 	useEffect(() => {
 		 fetch("http://localhost:8080/blog")
 		 .then(res => res.json())
 		 .then(res => setData(res))
 	}, [])
 
-	console.log(data)
+	//  console.log(data)
 
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
@@ -19,11 +31,9 @@ const PostContainer = () => {
 			<p className="font-serif text-sm dark:text-gray-400">Qualisque erroribus usu at, duo te agam soluta mucius.</p>
 		</div>
 		<div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-			{/* {
-				data.map(post => (
-					<Post key={post._id} data={post}/>
-				))
-			} */}
+			{
+				data.map(post => ( <Post key={post._id} post={post}/>))
+			}
 			
 		</div>
 	</div>

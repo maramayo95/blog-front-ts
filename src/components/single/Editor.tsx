@@ -29,7 +29,7 @@ const Editor = () => {
         
     }
 
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault()
         const data = {
           title: form.title,
