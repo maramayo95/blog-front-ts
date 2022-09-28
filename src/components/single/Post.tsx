@@ -1,4 +1,4 @@
-import React from 'react'
+import {Link, useParams, useNavigate} from 'react-router-dom' 
 
 interface PostProps {
 author: string, 
@@ -18,6 +18,9 @@ interface  Props {
 
 const Post = ({post}:Props) => {
 	const {_id, date, title, author, body} = post
+
+	
+	
 	const newDate = new Date(date)
 	const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -38,11 +41,11 @@ const Post = ({post}:Props) => {
 				</a>
 				<div className="flex flex-col flex-1 p-6">
 					<h3 className="flex-1 py-2 text-lg font-semibold leading-snug">{title}</h3>
-					<h4 className='flex-1 py-2 text-sm font-light leading-snug'>{author}</h4>
+					<h4 className='flex-1 py-2 text-sm font-lightf leading-snug'>{author}</h4>
 					<div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
 						<span>{capitalizeFirstLetter(newDate.toLocaleDateString("es-ES", options)) + ' - ' + newDate.toLocaleTimeString("es-ES")}</span>
-
 					</div>
+				<Link to={`/article/${_id}`} className="mt-4 px-4 py-2 text-center font-semibold rounded bg-gray-100 text-gray-800">Read more</Link>
 				</div>
 			</article>
     </>

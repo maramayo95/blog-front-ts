@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import {Link} from 'react-router-dom'
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -10,16 +10,15 @@ import './Editor.css'
   type FormValues = {
     title: string;
     author: string;
-    body: string; 
   }
 
 
 const Editor = () => {
+    const [loading , setLoading] = useState<boolean>(true)
     const [value, setValue] = useState<string>('')
     const [form, setForm ] = useState<FormValues>({
       title: "",
       author: "",
-      body: "",
 
     })
    
@@ -51,17 +50,21 @@ const Editor = () => {
            body: JSON.stringify(data)
          }
          )
+         setValue("")
+         setForm({
+          title:"",
+          author:""
+         })
+         setLoading(false)
         } catch (error) {
           console.error(error)
         }
-
-        console.log(data)
     }
  
     
   return (
     <div className="w-3/4 m-auto lg:w-3/4">
-        <h1 className="text-3xl py-5 text-white text-center lg:text-6xl">
+        <h1 className=" text-3xl py-5 text-white text-center lg:text-6xl">
           Write your ideas...
         </h1>
       <form onSubmit={handleSubmit}>
@@ -76,7 +79,9 @@ const Editor = () => {
           </div>
           <ReactQuill className="bg-white h-3/5" theme="snow" id="body" value={value} onChange={setValue} />
         <div className="flex justify-center ">
-            <input className="my-5 px-8 py-3  cursor-pointer text-lg font-semibold rounded dark:bg-violet-400  text-white" type="submit" value="Post" />
+            {loading ? <input className="my-5 px-8 py-3  cursor-pointer text-lg font-semibold rounded dark:bg-violet-400  text-white" type="submit" value="Post" /> :
+            <Link className="my-5 px-8 py-3  cursor-pointer text-lg font-semibold rounded dark:bg-violet-400  text-white" to ="/dashboard">Go to dashboard</Link>
+            }
         </div>
       </form>
     </div>

@@ -8,6 +8,10 @@
     color: white; 
 
 }
+
+.postContent h2 {
+    font-size: 1.5rem;
+}
 .postContent ul {
     padding-left: 1rem;
 }
