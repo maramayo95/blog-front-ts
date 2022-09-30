@@ -21,6 +21,15 @@ const Editor = () => {
       author: "",
 
     })
+
+    // Condicional 
+    // if(!data) {
+    //   setValue("")
+    // }
+    // if(data){
+    //   setValue(data.body)
+    // }
+
    
     const handleChange = (e:any) => {
       setForm({...form,

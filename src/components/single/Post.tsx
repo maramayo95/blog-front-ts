@@ -5,23 +5,14 @@ import PostProps from '../../interface/interfaces';
 
 interface  Props {
 	post: PostProps,
-	
+	deletePost: (id:string) => void
 }
 
 
-const Post = ({post, }:Props) => {
+const Post = ({post, deletePost }:Props) => {
 	const {_id, date, title, author, body} = post
 
-	const deletePost = (id:string)   => {
-				//Por que no puedo usar useEffect  ?
-				fetch(`http://localhost:8080/blog/${id}`, {
-					method: 'DELETE',
-					headers : {
-						'Content-Type': 'application/json'
-					},
-				})
-	  }
-
+	
 	
 	
 	const newDate = new Date(date)

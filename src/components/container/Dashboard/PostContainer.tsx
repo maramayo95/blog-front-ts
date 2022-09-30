@@ -5,7 +5,22 @@ import NavBar from '../../single/NavBar';
 
 const PostContainer = () => {
 	const url:string = "http://localhost:8080/blog"
-	const {data} = useFetch(url)
+	const {data, setData} = useFetch(url)
+	
+
+	const deletePost = (id:string)   => {
+		//Por que no puedo usar useEffect  ?
+		fetch(`http://localhost:8080/blog/${id}`, {
+			method: 'DELETE',
+			headers : {
+				'Content-Type': 'application/json'
+			},
+		})
+		const currentData = data.filter(post => post._id !== id)
+		setData(currentData)
+		
+}
+
 
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
@@ -16,7 +31,7 @@ const PostContainer = () => {
 		</div>
 		<div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
 			{
-				data.map(post => ( <Post key={post._id} post={post}/>))
+				data.map(post => ( <Post key={post._id} deletePost={deletePost} post={post}/>))
 			}
 			
 		</div>
