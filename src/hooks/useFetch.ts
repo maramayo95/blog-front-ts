@@ -2,12 +2,12 @@ import {useState, useEffect} from 'react'
 import PostProps from '../interface/interfaces'
     
 
-const useFetch = () => {
+const useFetch = (url:string) => {
  const [data, setData] = useState<PostProps[]>([])
  
  useEffect(() => {
      const fetching = async () => {
-        const request = await fetch("http://localhost:8080/blog")
+        const request = await fetch(url)
         const response = await request.json()
         setData(response)
     
@@ -15,7 +15,7 @@ const useFetch = () => {
     
     fetching()
 
-}, [])
+}, [data])
  
 
 return { data  }

@@ -4,8 +4,8 @@ import useFetch from '../../../hooks/useFetch';
 import NavBar from '../../single/NavBar';
 
 const PostContainer = () => {
-	
-	const {data} = useFetch()
+	const url:string = "http://localhost:8080/blog"
+	const {data} = useFetch(url)
 
   return (
     <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">

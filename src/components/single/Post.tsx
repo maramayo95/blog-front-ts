@@ -1,23 +1,26 @@
-import {Link, useParams, useNavigate} from 'react-router-dom' 
+import {useEffect} from 'react';
+import {Link} from 'react-router-dom' 
+import PostProps from '../../interface/interfaces';
 
-interface PostProps {
-author: string, 
-body: string,
-comments: []
-date: Date, 
-title:string, 
-__v: Number,
-_id: string
-}
 
 interface  Props {
-	post: PostProps
+	post: PostProps,
+	
 }
 
 
-
-const Post = ({post}:Props) => {
+const Post = ({post, }:Props) => {
 	const {_id, date, title, author, body} = post
+
+	const deletePost = (id:string)   => {
+				//Por que no puedo usar useEffect  ?
+				fetch(`http://localhost:8080/blog/${id}`, {
+					method: 'DELETE',
+					headers : {
+						'Content-Type': 'application/json'
+					},
+				})
+	  }
 
 	
 	
@@ -39,6 +42,12 @@ const Post = ({post}:Props) => {
 				<a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
 					<img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src="https://source.unsplash.com/200x200/?fashion?1" />
 				</a>
+				<div className="flex flex-row-reverse mx-4 my-4">
+					<button className="px-4 py-2 mx-1 bg-red-500 rounded-sm" onClick={()=> deletePost(_id) }>X</button>
+					<Link to={`/edit/article/${_id}`}>
+						<button className="px-4 py-2 mx-1 bg-yellow-500 rounded-sm">Edit</button>
+					</Link>
+				</div>
 				<div className="flex flex-col flex-1 p-6">
 					<h3 className="flex-1 py-2 text-lg font-semibold leading-snug">{title}</h3>
 					<h4 className='flex-1 py-2 text-sm font-lightf leading-snug'>{author}</h4>

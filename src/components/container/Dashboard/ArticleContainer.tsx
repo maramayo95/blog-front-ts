@@ -6,7 +6,7 @@ import NavBar from '../../single/NavBar';
 
 const ArticleContainer = () => {
 
-    const {data} = useFetch()
+    const {data} = useFetch('http://localhost:8080/blog')
     const {id} = useParams()
     
     const findArt = data.find(art => art._id === id )
